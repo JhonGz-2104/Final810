@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/WebApplication3">
+  <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" maxActive="20" maxIdle="10" maxWait="-1" name="si" password="E;L;I;A,S;0;5" type="javax.sql.DataSource" url="jdbc:sqlserver://30puede.database.windows.net\MSSQL:1433;databaseName=inventariodb-funPli" username="elias"/>
+  <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" maxActive="20" maxIdle="10" maxWait="-1" name="n" password="E;L;I;A,S;0;5" type="javax.sql.DataSource" url="jdbc:sqlserver://30puede.database.windows.net\MSSQL:1433;databaseName=inventariodb-funPli" username="elias"/>
+</Context>

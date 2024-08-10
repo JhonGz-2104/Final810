@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="WebApplication3PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.jp.entity.Articulos</class>
+    <class>com.jp.entity.Almacen</class>
+    <class>com.jp.entity.EstadoArticulo</class>
+    <class>com.jp.entity.Transacciones</class>
+    <class>com.jp.entity.EstadoAlmacen</class>
+    <class>com.jp.entity.TipoTransaccion</class>
+    <class>com.jp.entity.TipoInventario</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://30puede.database.windows.net\MSSQL:1433;databaseName=inventariodb-funPli"/>
+      <property name="javax.persistence.jdbc.user" value="elias"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="E;L;I;A,S;0;5"/>
+    </properties>
+  </persistence-unit>
+</persistence>

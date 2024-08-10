@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AsientoContable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idAuxiliarOrigen" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cuentaDB" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cuentaCR" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsientoContableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AsientoContableResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cuentas">
+        <s:complexType />
+      </s:element>
+      <s:element name="CuentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CuentasResult" type="tns:ArrayOfTiposCuentasLista" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTiposCuentasLista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TiposCuentasLista" nillable="true" type="tns:TiposCuentasLista" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TiposCuentasLista">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idCuenta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CuentasDebito">
+        <s:complexType />
+      </s:element>
+      <s:element name="CuentasDebitoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CuentasDebitoResult" type="tns:ArrayOfTiposCuentasLista" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CuentasCredito">
+        <s:complexType />
+      </s:element>
+      <s:element name="CuentasCreditoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CuentasCreditoResult" type="tns:ArrayOfTiposCuentasLista" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AsientoContableSoapIn">
+    <wsdl:part name="parameters" element="tns:AsientoContable" />
+  </wsdl:message>
+  <wsdl:message name="AsientoContableSoapOut">
+    <wsdl:part name="parameters" element="tns:AsientoContableResponse" />
+  </wsdl:message>
+  <wsdl:message name="CuentasSoapIn">
+    <wsdl:part name="parameters" element="tns:Cuentas" />
+  </wsdl:message>
+  <wsdl:message name="CuentasSoapOut">
+    <wsdl:part name="parameters" element="tns:CuentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="CuentasDebitoSoapIn">
+    <wsdl:part name="parameters" element="tns:CuentasDebito" />
+  </wsdl:message>
+  <wsdl:message name="CuentasDebitoSoapOut">
+    <wsdl:part name="parameters" element="tns:CuentasDebitoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CuentasCreditoSoapIn">
+    <wsdl:part name="parameters" element="tns:CuentasCredito" />
+  </wsdl:message>
+  <wsdl:message name="CuentasCreditoSoapOut">
+    <wsdl:part name="parameters" element="tns:CuentasCreditoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SSWSSoap">
+    <wsdl:operation name="AsientoContable">
+      <wsdl:input message="tns:AsientoContableSoapIn" />
+      <wsdl:output message="tns:AsientoContableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cuentas">
+      <wsdl:input message="tns:CuentasSoapIn" />
+      <wsdl:output message="tns:CuentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CuentasDebito">
+      <wsdl:input message="tns:CuentasDebitoSoapIn" />
+      <wsdl:output message="tns:CuentasDebitoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CuentasCredito">
+      <wsdl:input message="tns:CuentasCreditoSoapIn" />
+      <wsdl:output message="tns:CuentasCreditoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SSWSSoap" type="tns:SSWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AsientoContable">
+      <soap:operation soapAction="http://tempuri.org/AsientoContable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cuentas">
+      <soap:operation soapAction="http://tempuri.org/Cuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CuentasDebito">
+      <soap:operation soapAction="http://tempuri.org/CuentasDebito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CuentasCredito">
+      <soap:operation soapAction="http://tempuri.org/CuentasCredito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SSWSSoap12" type="tns:SSWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AsientoContable">
+      <soap12:operation soapAction="http://tempuri.org/AsientoContable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cuentas">
+      <soap12:operation soapAction="http://tempuri.org/Cuentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CuentasDebito">
+      <soap12:operation soapAction="http://tempuri.org/CuentasDebito" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CuentasCredito">
+      <soap12:operation soapAction="http://tempuri.org/CuentasCredito" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SSWS">
+    <wsdl:port name="SSWSSoap" binding="tns:SSWSSoap">
+      <soap:address location="http://www.contabilidadws.somee.com/SSWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SSWSSoap12" binding="tns:SSWSSoap12">
+      <soap12:address location="http://www.contabilidadws.somee.com/SSWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
